@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1325757473 source:c:\documents and settings\james knight\medication-tracker\main.cpp
+	<iostream>
+	<conio.h>
+
