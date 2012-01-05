@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <fstream>
 
 using namespace std;
 
@@ -79,8 +80,14 @@ int main()
     cout << "You have " << med_left << " tablets left, this will last you " << med_box_days_left << " more days." << endl;
     cout << "You have " << med_rpt << " repeats left, the cycle will last you " << med_rpt_days_left << " more days." << endl;
     cout << "This will cost you " << dollarsign << med_rpt_cost << "." << endl;
-    cout << "Each tablet is costing you " << dollarsign << med_tab_cost << "." << endl;
-    cout << "Please press any key to exit.";
+    cout << "Please press any key to exit, please see stats.txt for more statistics.";
+    ofstream statsfile;
+    statsfile.open ("stats.txt");
+    statsfile << "/n" << med_name << "statistics. --------------------" << endl;
+    statsfile << "Cost per tablet: " << dollarsign << med_tab_cost << endl;
+    statsfile << "Cost per repeat cycle: " << dollarsign << med_rpt_get_cost << endl;
+    statsfile << "END STATISTICS FILE --------------------";
+    statsfile.close();
     getch();
     return 0;
 }

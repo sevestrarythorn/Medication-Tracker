@@ -1,0 +1,4 @@
+/nClolodollastatistics. --------------------
+Cost per tablet: $0.25
+Cost per repeat cycle: $75
+END STATISTICS FILE --------------------
