@@ -91,18 +91,18 @@ int main()
     med_tab_cost = med_cost / med_box;
     med_rpt_cost = med_rpt * med_cost;
 
-    cout << username << ". Here are the statistics for your medication, " << med_name << "." << endl;
+    cout << username << ", Here are the statistics for your medication, " << med_name << "." << endl;
     cout << "You take " << med_day << " tablets daily out of a box of " << med_box << "." << endl;
     cout << "You have " << med_left << " tablets left, this will last you " << med_box_days_left << " more days." << endl;
     cout << "You have " << med_rpt << " repeats left, the cycle will last you " << med_rpt_days_left << " more days." << endl;
-    cout << "This will cost you " << dollarsign << med_rpt_cost << "." << endl;
+    cout << "This will cost you " << dollarsign << med_rpt_cost << "in total and " << dollarsign << med_cost << " per box." << endl;
     cout << "Please press any key to exit, please see stats.txt for more statistics.";
     ofstream statsfile;
     statsfile.open ("stats.txt");
-    statsfile << "/n" << med_name << "statistics. --------------------" << endl;
+    statsfile << med_name << " statistics. --------------------" << endl;
     statsfile << "Cost per tablet: " << dollarsign << med_tab_cost << endl;
     statsfile << "Cost per repeat cycle: " << dollarsign << med_rpt_get_cost << endl;
-    statsfile << "END STATISTICS FILE --------------------";
+    statsfile << "END STATISTICS FILE --------------------" << endl;
     statsfile.close();
     getch();
     return 0;
