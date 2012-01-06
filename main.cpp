@@ -17,6 +17,7 @@
 #include <iostream>
 #include <conio.h>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -25,33 +26,33 @@ int main()
 {
     // Declaring base variables
     // User's name
-    char username[100];
+    string username;
     // Medication name
-    char med_name[100];
+    string med_name;
     // Tablets in a box.
-    float med_box;
+    int med_box;
     // Daily tablet intake.
     float med_day;
     // Tablets left in box.
     float med_left;
     // Repeats left.
-    float med_rpt;
+    int med_rpt;
     // Usual repeats given by GP.
-    float med_rpt_get;
+    int med_rpt_get;
     // Medication cost.
     float med_cost;
     // Currency symbol
-    char dollarsign[10];
+    string dollarsign;
 
     // Asking name for personal touch
     cout << "What is your name?: ";
-    cin >> username;
+    getline (cin,username);
     cout << "What is your currency symbol?: ";
-    cin >> dollarsign;
+    getline (cin,dollarsign);
     cout << "Welcome to Medication Tracker, " << username << "!" << endl;
     // Asking questions about medication
     cout << "What is the name of your medication?: ";
-    cin >> med_name;
+    getline (cin,med_name);
     cout << "How many tablets are in a box?: ";
     cin >> med_box;
     cout << "How many tablets do you take daily?: ";
@@ -70,11 +71,11 @@ int main()
     // How long a box lasts
     float med_box_days;
     // How long the current box(es) will last.
-    float med_box_days_left;
+    int med_box_days_left;
     // How long the current repeat cycle will last.
-    float med_rpt_days_left;
+    int med_rpt_days_left;
     // How long a repeat cycle lasts.
-    float med_rpt_days;
+    int med_rpt_days;
     // How much a repeat cycle costs.
     float med_rpt_get_cost;
     // How much a tablet costs.
@@ -84,7 +85,14 @@ int main()
     // How many days a repeat cycle lasts.
     float med_rpt_get_days;
     // How many tablets in a repeat cycle.
-    float med_tab_rpt_get;
+    int med_tab_rpt_get;
+    // How many tablets you take a year.
+    float med_tab_year;
+    // How many boxes you use in a year.
+    float med_box_year;
+    // How much your medication costs per year.
+    float med_cost_year;
+
 
     // Various calculations.
     med_box_days = med_box / med_day;
@@ -96,6 +104,9 @@ int main()
     med_rpt_cost = med_rpt * med_cost;
     med_rpt_get_days = med_rpt_get * med_box_days;
     med_tab_rpt_get = med_box * med_rpt_get;
+    med_tab_year = med_day * 365;
+    med_box_year = med_tab_year / med_box;
+    med_cost_year = med_cost * med_box_year;
 
     cout << username << ", Here are the statistics for your medication, " << med_name << "." << endl;
     cout << "You take " << med_day << " tablets daily out of a box of " << med_box << ". This lasts you " << med_box_days << " days." << endl;
@@ -110,6 +121,9 @@ int main()
     statsfile << "Cost per repeat cycle: " << dollarsign << med_rpt_get_cost << "." << endl;
     statsfile << "Days per repeat cycle: " << med_rpt_get_days << "." << endl;
     statsfile << "Tablets per repeat cycle: " << med_tab_rpt_get << "." << endl;
+    statsfile << "Tablets per year: " << med_tab_year << "." << endl;
+    statsfile << "Boxes per year: " << med_box_year << "." << endl;
+    statsfile << "Cost per year: " << dollarsign << med_cost_year << "." << endl;
     statsfile << "END STATISTICS FILE --------------------" << endl;
     statsfile.close();
     getch();
