@@ -81,6 +81,10 @@ int main()
     float med_tab_cost;
     // How much the current repeat cycle will cost.
     float med_rpt_cost;
+    // How many days a repeat cycle lasts.
+    float med_rpt_get_days;
+    // How many tablets in a repeat cycle.
+    float med_tab_rpt_get;
 
     // Various calculations.
     med_box_days = med_box / med_day;
@@ -90,18 +94,22 @@ int main()
     med_rpt_get_cost = med_rpt_get * med_cost;
     med_tab_cost = med_cost / med_box;
     med_rpt_cost = med_rpt * med_cost;
+    med_rpt_get_days = med_rpt_get * med_box_days;
+    med_tab_rpt_get = med_box * med_rpt_get;
 
     cout << username << ", Here are the statistics for your medication, " << med_name << "." << endl;
-    cout << "You take " << med_day << " tablets daily out of a box of " << med_box << "." << endl;
+    cout << "You take " << med_day << " tablets daily out of a box of " << med_box << ". This lasts you " << med_box_days << " days." << endl;
     cout << "You have " << med_left << " tablets left, this will last you " << med_box_days_left << " more days." << endl;
     cout << "You have " << med_rpt << " repeats left, the cycle will last you " << med_rpt_days_left << " more days." << endl;
-    cout << "This will cost you " << dollarsign << med_rpt_cost << "in total and " << dollarsign << med_cost << " per box." << endl;
+    cout << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
     cout << "Please press any key to exit, please see stats.txt for more statistics.";
     ofstream statsfile;
     statsfile.open ("stats.txt");
     statsfile << med_name << " statistics. --------------------" << endl;
-    statsfile << "Cost per tablet: " << dollarsign << med_tab_cost << endl;
-    statsfile << "Cost per repeat cycle: " << dollarsign << med_rpt_get_cost << endl;
+    statsfile << "Cost per tablet: " << dollarsign << med_tab_cost << "." << endl;
+    statsfile << "Cost per repeat cycle: " << dollarsign << med_rpt_get_cost << "." << endl;
+    statsfile << "Days per repeat cycle: " << med_rpt_get_days << "." << endl;
+    statsfile << "Tablets per repeat cycle: " << med_tab_rpt_get << "." << endl;
     statsfile << "END STATISTICS FILE --------------------" << endl;
     statsfile.close();
     getch();
