@@ -140,6 +140,7 @@ int main()
             logfile << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
             logfile << "END LOG ENTRY --------------------" << endl;
             logfile.close();
+            break;
         }
         ofstream statsfile;
         statsfile.open ("stats.txt");
