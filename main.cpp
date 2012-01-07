@@ -72,13 +72,27 @@ int main()
         cin >> med_day;
         cout << "How many tablets do you have left?: ";
         cin >> med_left;
-        cout << "How many repeats do you have left?: ";
+        cout << "How many repeats do you have left (Current one inclusive)?: ";
         cin >> med_rpt;
+        if (med_rpt == 0)
+        {
+            cout << "You cannot enter zero, if you are on your last repeat, please type 1." << endl;
+            cout << "How many repeats do you have left?: ";
+            cin >> med_rpt;
+        }
         cout << "How many repeats do you usually get?: ";
         cin >> med_rpt_get;
         // The dollar sign below is for currency display.
         cout << "How much does your medication cost?: " << dollarsign;
         cin >> med_cost;
+        if (med_cost == 0)
+        {
+            cout << "You cannot enter zero, if your medication is free, you currently cannot use this program." << endl;
+            cout << "Please press any key to exit." << endl;
+            getch();
+            return 1;
+        }
+
         // Declaring calc variables
 
         // How long a box lasts
@@ -105,7 +119,16 @@ int main()
         float med_box_year;
         // How much your medication costs per year.
         float med_cost_year;
-
+        // How many tablets have beem taken.
+        float med_taken;
+        // Needed for graphing
+        int med_cost_year_round;
+        // Needed for graphing
+        int med_taken_round;
+        // Needed for graphing
+        int med_cost_round;
+        // Needed for graphing
+        int med_left_round;
 
         // Various calculations.
         med_box_days = med_box / med_day;
@@ -120,7 +143,73 @@ int main()
         med_tab_year = med_day * 365;
         med_box_year = med_tab_year / med_box;
         med_cost_year = med_cost * med_box_year;
+        med_taken = med_box - med_left;
 
+        // Declaring graph variables.
+        int med_cost_year_graph;
+        int med_cost_graph;
+        int med_box_graph;
+        int med_left_graph;
+        int med_taken_graph;
+
+        // Graphing variable setting.
+        med_cost_year_graph = 0;
+        med_box_graph = 0;
+        med_left_graph = 0;
+        med_taken_graph = 0;
+        med_cost_graph = 0;
+        med_cost_round = med_cost;
+        med_taken_round = med_taken;
+        med_left_round = med_left;
+        med_cost_year_round = med_cost_year;
+
+
+        // Printing graphs.
+        ofstream graphfile;
+        graphfile.open ("graph.txt");
+        graphfile << "--------------------" << endl;
+        graphfile << med_name << " cost per year in dollars." << endl;
+        while (med_cost_year_graph != med_cost_year_round)
+        {
+            graphfile << dollarsign;
+            ++med_cost_year_graph;
+        }
+        graphfile << endl << "--------------------" << endl;
+
+        graphfile << "--------------------" << endl;
+        graphfile << med_name << " cost per box in dollars." << endl;
+        while (med_cost_graph != med_cost_round)
+        {
+            graphfile << dollarsign;
+            ++med_cost_graph;
+        }
+        graphfile << endl << "--------------------" << endl;
+
+        graphfile << "--------------------" << endl;
+        graphfile << "An average box of "<< med_name << "." << endl;
+        while (med_box_graph != med_box)
+        {
+            graphfile << "O";
+            ++med_box_graph;
+        }
+        graphfile << endl << "--------------------" << endl;
+
+        graphfile << "--------------------" << endl;
+        graphfile << "Your current box of "<< med_name << "." << endl;
+        while (med_taken_graph != med_taken_round)
+        {
+            graphfile << "-";
+            ++med_taken_graph;
+        }
+        while (med_left_graph != med_left_round)
+        {
+            graphfile << "O";
+            ++med_left_graph;
+        }
+
+        graphfile << endl << "--------------------" << endl;
+
+        // Printing relevant stats on screen.
         cout << username << ", Here are the statistics for your medication, " << med_name << "." << endl;
         cout << "You take " << med_day << " tablets daily out of a box of " << med_box << ". This lasts you " << med_box_days << " days." << endl;
         cout << "You have " << med_left << " tablets left, this will last you " << med_box_days_left << " more days." << endl;
@@ -128,6 +217,8 @@ int main()
         cout << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
         cout << "Would you like to save this information to log.txt? [Y/N]: ";
         cin >> savelog;
+
+        // Saving log.
         while (toupper(savelog) == 'Y')
         {
             ofstream logfile;
@@ -142,6 +233,8 @@ int main()
             logfile.close();
             break;
         }
+
+        // Saving secondary stats.
         ofstream statsfile;
         statsfile.open ("stats.txt");
         statsfile << med_name << " statistics. --------------------" << endl;
