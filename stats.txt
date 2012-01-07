@@ -1,0 +1,9 @@
+Fish Oil statistics. --------------------
+Cost per tablet: $0.25.
+Cost per repeat cycle: $25.
+Days per repeat cycle: 50.
+Tablets per repeat cycle: 100.
+Tablets per year: 730.
+Boxes per year: 7.3.
+Cost per year: $182.5.
+END STATISTICS ENTRY --------------------

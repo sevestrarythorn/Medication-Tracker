@@ -1,0 +1,7 @@
+START LOG ENTRY --------------------
+James, Here are the statistics for your medication, Fish Oil.
+You take 2 tablets daily out of a box of 100. This lasts you 50 days.
+You have 40 tablets left, this will last you 20 more days.
+You have 1 repeats left, the cycle will last you 20 more days.
+This will cost you $25 in total and $25 per box.
+END LOG ENTRY --------------------

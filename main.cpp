@@ -85,13 +85,6 @@ int main()
         // The dollar sign below is for currency display.
         cout << "How much does your medication cost?: " << dollarsign;
         cin >> med_cost;
-        if (med_cost == 0)
-        {
-            cout << "You cannot enter zero, if your medication is free, you currently cannot use this program." << endl;
-            cout << "Please press any key to exit." << endl;
-            getch();
-            return 1;
-        }
 
         // Declaring calc variables
 
@@ -133,7 +126,14 @@ int main()
         // Various calculations.
         med_box_days = med_box / med_day;
         med_box_days_left = med_left / med_day;
-        med_rpt_days_left = med_box_days_left + (med_box_days * med_rpt);
+        if (med_rpt != 1)
+        {
+            med_rpt_days_left = med_box_days_left + (med_box_days * med_rpt);
+        }
+        else
+        {
+            med_rpt_days_left = med_box_days_left;
+        }
         med_rpt_days = med_box * med_rpt_get;
         med_rpt_get_cost = med_rpt_get * med_cost;
         med_tab_cost = med_cost / med_box;
