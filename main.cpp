@@ -128,7 +128,7 @@ int main()
         cout << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
         cout << "Would you like to save this information to log.txt? [Y/N]: ";
         cin >> savelog;
-        while (toupper( savelog ) == 'Y')
+        while (toupper(savelog) == 'Y')
         {
             ofstream logfile;
             logfile.open ("log.txt");
