@@ -1,9 +1,1 @@
-Rix A Done statistics. --------------------
-Cost per tablet: $0.1.
-Cost per repeat cycle: $50.
-Days per repeat cycle: 166.667.
-Tablets per repeat cycle: 500.
-Tablets per year: 1095.
-Boxes per year: 10.95.
-Cost per year: $109.5.
-END STATISTICS FILE --------------------
+
