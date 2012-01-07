@@ -52,8 +52,10 @@ int main()
     cout << "Would you like to run Medication Tracker? [Y/N]: ";
     cin >> runprogram;
 
-    while (toupper( runprogram ) == 'Y')
+    while (toupper(runprogram) == 'Y')
     {
+        // Needed to fix text skip bug.
+        cin.ignore(1);
         // Asking name for personal touch
         cout << "What is your name?: ";
         getline (cin,username);
