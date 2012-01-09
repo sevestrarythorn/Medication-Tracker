@@ -204,18 +204,19 @@ int main()
         cout << "Would you like to save this information to graph.txt? [Y/N]: ";
         cin >> savegraph;
 
-        while (toupper(savegraph) == 'Y')
+        // Graphing variable resetting.
+        med_cost_year_graph = 0;
+        med_box_graph = 0;
+        med_left_graph = 0;
+        med_taken_graph = 0;
+        med_cost_graph = 0;
+        med_cost_round = med_cost;
+        med_taken_round = med_taken;
+        med_left_round = med_left;
+        med_cost_year_round = med_cost_year;
+
+        if (toupper(savegraph) == 'Y')
         {
-            // Graphing variable resetting.
-            med_cost_year_graph = 0;
-            med_box_graph = 0;
-            med_left_graph = 0;
-            med_taken_graph = 0;
-            med_cost_graph = 0;
-            med_cost_round = med_cost;
-            med_taken_round = med_taken;
-            med_left_round = med_left;
-            med_cost_year_round = med_cost_year;
 
             // Printing graphs to file.
             ofstream graphfile;
@@ -270,7 +271,7 @@ int main()
         cin >> savelog;
 
         // Saving log.
-        while (toupper(savelog) == 'Y')
+        if (toupper(savelog) == 'Y')
         {
             ofstream logfile;
             logfile.open ("log.txt");
@@ -282,7 +283,6 @@ int main()
             logfile << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
             logfile << "END LOG ENTRY --------------------" << endl;
             logfile.close();
-            break;
         }
 
         // Saving secondary stats.
@@ -301,7 +301,7 @@ int main()
         cout << "Would you like to enter another medication? [Y/N]";
         cin >> runprogram;
     }
-    cout << "Please press any key to exit, please see stats.txt for more statistics.";
-    cin.ignore(2);
+    cout << "Please press enter to exit, please see stats.txt for more statistics.";
+    cin.ignore(1);
     return 0;
 }
