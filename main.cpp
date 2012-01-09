@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include <conio.h>
 #include <fstream>
 #include <string>
 
@@ -47,6 +46,8 @@ int main()
     char runprogram;
     // Yes/No for saving log.
     char savelog;
+    // Yes/No for saving graph.
+    char savegraph;
 
     // Asking to run program.
     cout << "Would you like to run Medication Tracker? [Y/N]: ";
@@ -94,8 +95,6 @@ int main()
         int med_box_days_left;
         // How long the current repeat cycle will last.
         int med_rpt_days_left;
-        // How long a repeat cycle lasts.
-        int med_rpt_days;
         // How much a repeat cycle costs.
         float med_rpt_get_cost;
         // How much a tablet costs.
@@ -134,7 +133,6 @@ int main()
         {
             med_rpt_days_left = med_box_days_left;
         }
-        med_rpt_days = med_box * med_rpt_get;
         med_rpt_get_cost = med_rpt_get * med_cost;
         med_tab_cost = med_cost / med_box;
         med_rpt_cost = med_rpt * med_cost;
@@ -164,50 +162,103 @@ int main()
         med_cost_year_round = med_cost_year;
 
 
-        // Printing graphs.
-        ofstream graphfile;
-        graphfile.open ("graph.txt");
-        graphfile << "--------------------" << endl;
-        graphfile << med_name << " cost per year in dollars." << endl;
+        cout << "--------------------" << endl;
+        cout << med_name << " cost per year in dollars." << endl;
         while (med_cost_year_graph != med_cost_year_round)
         {
-            graphfile << dollarsign;
+            cout << dollarsign;
             ++med_cost_year_graph;
         }
-        graphfile << endl << "--------------------" << endl;
 
-        graphfile << "--------------------" << endl;
-        graphfile << med_name << " cost per box in dollars." << endl;
+        cout << endl  << "--------------------" << endl;
+        cout << med_name << " cost per box in dollars." << endl;
         while (med_cost_graph != med_cost_round)
         {
-            graphfile << dollarsign;
+            cout << dollarsign;
             ++med_cost_graph;
         }
-        graphfile << endl << "--------------------" << endl;
 
-        graphfile << "--------------------" << endl;
-        graphfile << "An average box of "<< med_name << "." << endl;
+        cout << endl  << "--------------------" << endl;
+        cout << "An average box of "<< med_name << "." << endl;
         while (med_box_graph != med_box)
         {
-            graphfile << "O";
+            cout << "O";
             ++med_box_graph;
         }
-        graphfile << endl << "--------------------" << endl;
 
-        graphfile << "--------------------" << endl;
-        graphfile << "Your current box of "<< med_name << "." << endl;
+        cout << endl  << "--------------------" << endl;
+        cout << "Your current box of "<< med_name << "." << endl;
         while (med_taken_graph != med_taken_round)
         {
-            graphfile << "-";
+            cout << "-";
             ++med_taken_graph;
         }
         while (med_left_graph != med_left_round)
         {
-            graphfile << "O";
+            cout << "O";
             ++med_left_graph;
         }
 
-        graphfile << endl << "--------------------" << endl;
+        cout << endl;
+
+        cout << "Would you like to save this information to graph.txt? [Y/N]: ";
+        cin >> savegraph;
+
+        // Graphing variable resetting.
+        med_cost_year_graph = 0;
+        med_box_graph = 0;
+        med_left_graph = 0;
+        med_taken_graph = 0;
+        med_cost_graph = 0;
+        med_cost_round = med_cost;
+        med_taken_round = med_taken;
+        med_left_round = med_left;
+        med_cost_year_round = med_cost_year;
+
+        while (toupper(savegraph) == 'Y')
+        {
+            // Printing graphs to file.
+            ofstream graphfile;
+            graphfile.open ("graph.txt");
+            graphfile << "--------------------" << endl;
+            graphfile << med_name << " cost per year in dollars." << endl;
+            while (med_cost_year_graph != med_cost_year_round)
+            {
+                graphfile << dollarsign;
+                ++med_cost_year_graph;
+            }
+
+            graphfile << endl  << "--------------------" << endl;
+            graphfile << med_name << " cost per box in dollars." << endl;
+            while (med_cost_graph != med_cost_round)
+            {
+                graphfile << dollarsign;
+                ++med_cost_graph;
+            }
+
+            graphfile << endl  << "--------------------" << endl;
+            graphfile << "An average box of "<< med_name << "." << endl;
+            while (med_box_graph != med_box)
+            {
+                graphfile << "O";
+                ++med_box_graph;
+            }
+
+            graphfile << endl  << "--------------------" << endl;
+            graphfile << "Your current box of "<< med_name << "." << endl;
+            while (med_taken_graph != med_taken_round)
+            {
+                graphfile << "-";
+                ++med_taken_graph;
+            }
+            while (med_left_graph != med_left_round)
+            {
+                graphfile << "O";
+                ++med_left_graph;
+            }
+
+            graphfile << endl;
+        }
 
         // Printing relevant stats on screen.
         cout << username << ", Here are the statistics for your medication, " << med_name << "." << endl;
@@ -251,6 +302,6 @@ int main()
         cin >> runprogram;
     }
     cout << "Please press any key to exit, please see stats.txt for more statistics.";
-    getch();
+    cin.ignore(2);
     return 0;
 }
