@@ -204,19 +204,19 @@ int main()
         cout << "Would you like to save this information to graph.txt? [Y/N]: ";
         cin >> savegraph;
 
-        // Graphing variable resetting.
-        med_cost_year_graph = 0;
-        med_box_graph = 0;
-        med_left_graph = 0;
-        med_taken_graph = 0;
-        med_cost_graph = 0;
-        med_cost_round = med_cost;
-        med_taken_round = med_taken;
-        med_left_round = med_left;
-        med_cost_year_round = med_cost_year;
-
         while (toupper(savegraph) == 'Y')
         {
+            // Graphing variable resetting.
+            med_cost_year_graph = 0;
+            med_box_graph = 0;
+            med_left_graph = 0;
+            med_taken_graph = 0;
+            med_cost_graph = 0;
+            med_cost_round = med_cost;
+            med_taken_round = med_taken;
+            med_left_round = med_left;
+            med_cost_year_round = med_cost_year;
+
             // Printing graphs to file.
             ofstream graphfile;
             graphfile.open ("graph.txt");
