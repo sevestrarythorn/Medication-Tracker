@@ -298,10 +298,15 @@ int main()
         statsfile << "Cost per year: " << dollarsign << med_cost_year << "." << endl;
         statsfile << "END STATISTICS ENTRY --------------------" << endl;
         statsfile.close();
+
+        // Asking to enter another medication.
         cout << "Would you like to enter another medication? [Y/N]";
         cin >> runprogram;
+
+        cout << "Please see stats.txt for more statistics." << endl;
     }
-    cout << "Please press enter to exit, please see stats.txt for more statistics.";
+    cout << "Please press enter to exit.";
+    cin.ignore(1);
     cin.ignore(1);
     return 0;
 }

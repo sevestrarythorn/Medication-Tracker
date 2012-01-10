@@ -1,9 +1,9 @@
-Fish Oil statistics. --------------------
-Cost per tablet: $0.3.
-Cost per repeat cycle: $30.
-Days per repeat cycle: 50.
-Tablets per repeat cycle: 100.
+Respiradone statistics. --------------------
+Cost per tablet: $0.125.
+Cost per repeat cycle: $37.5.
+Days per repeat cycle: 150.
+Tablets per repeat cycle: 300.
 Tablets per year: 730.
-Boxes per year: 7.3.
-Cost per year: $219.
+Boxes per year: 12.1667.
+Cost per year: $91.25.
 END STATISTICS ENTRY --------------------
