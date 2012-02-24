@@ -267,6 +267,7 @@ int main()
         cout << "You have " << med_left << " tablets left, this will last you " << med_box_days_left << " more days." << endl;
         cout << "You have " << med_rpt << " repeats left, the cycle will last you " << med_rpt_days_left << " more days." << endl;
         cout << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
+        cout << "The next cycle will have " << med_rpt_get << " repeats and will cost " << dollarsign << med_rpt_get_cost << "." << endl;
         cout << "Would you like to save this information to log.txt? [Y/N]: ";
         cin >> savelog;
 
@@ -281,6 +282,7 @@ int main()
             logfile << "You have " << med_left << " tablets left, this will last you " << med_box_days_left << " more days." << endl;
             logfile << "You have " << med_rpt << " repeats left, the cycle will last you " << med_rpt_days_left << " more days." << endl;
             logfile << "This will cost you " << dollarsign << med_rpt_cost << " in total and " << dollarsign << med_cost << " per box." << endl;
+            logfile << "The next cycle will have " << med_rpt_get << " repeats and will cost " << dollarsign << med_rpt_get_cost << "." << endl;
             logfile << "END LOG ENTRY --------------------" << endl;
             logfile.close();
         }

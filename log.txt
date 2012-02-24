@@ -1,7 +1,0 @@
-START LOG ENTRY --------------------
-James, Here are the statistics for your medication, Respiradone.
-You take 2 tablets daily out of a box of 60. This lasts you 30 days.
-You have 50 tablets left, this will last you 25 more days.
-You have 4 repeats left, the cycle will last you 145 more days.
-This will cost you $30 in total and $7.5 per box.
-END LOG ENTRY --------------------
